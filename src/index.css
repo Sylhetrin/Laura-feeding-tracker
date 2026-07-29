@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/quicksand/500.css';
+@import '@fontsource/quicksand/600.css';
+@import '@fontsource/quicksand/700.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: 'Quicksand', 'Nunito', ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-cream: #fbf8f6;
+  --color-ink: #241f2c;
+  --color-plan: #5b7fde;
+  --color-actual: #f6749b;
+  --color-sage: #6fae8f;
+  --color-amber: #e8a23d;
+  --color-danger: #e2564f;
+}
+
+:root {
+  color-scheme: light;
+  --bg: #fbf8f6;
+  --bg-elevated: #ffffff;
+  --card: #ffffff;
+  --card-border: #efe6e2;
+  --text-primary: #241f2c;
+  --text-secondary: #786f7c;
+  --text-tertiary: #a89fac;
+  --accent-plan: #5b7fde;
+  --accent-actual: #f6749b;
+  --accent-sage: #4f9873;
+  --accent-amber: #c9821f;
+  --accent-danger: #d84a43;
+  --shadow-card: 0 1px 2px rgba(36, 31, 44, 0.04), 0 8px 24px -12px rgba(36, 31, 44, 0.12);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #14121a;
+  --bg-elevated: #1c1a24;
+  --card: #1f1c28;
+  --card-border: #2c2836;
+  --text-primary: #f3eef2;
+  --text-secondary: #b3a9b6;
+  --text-tertiary: #7d7482;
+  --accent-plan: #7d9bf0;
+  --accent-actual: #fa8fad;
+  --accent-sage: #7fc19d;
+  --accent-amber: #f0b262;
+  --accent-danger: #f0736c;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 24px -12px rgba(0, 0, 0, 0.55);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent-actual) 30%, transparent);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .tap-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
